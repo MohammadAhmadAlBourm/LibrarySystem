@@ -1,0 +1,49 @@
+﻿@model List<LibrarySystem.Models.Domain.Book>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Book List </h1>
+
+<a href="Books/AddBook"> Add New Book </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Publisher
+            </th>
+            <th>
+                PublishDate
+            </th>
+            <th>
+                ISBN
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Publisher</td>
+                <td>@book.PublishDate</td>
+                <td>@book.ISBN</td>
+
+
+                <td><a href="Books/ViewBooks/@book.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+

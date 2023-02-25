@@ -1,0 +1,38 @@
+﻿@model List<LibrarySystem.Models.Domain.Author>
+@{
+    ViewData["Title"] = "Author";
+}
+
+<h1>Authors List </h1>
+
+<a href="Authors/Add"> Add New Author </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var author in Model)
+        {
+            <tr>
+                <td>@author.Id</td>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+                <td><a href="Authors/ViewAuthor/@author.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+

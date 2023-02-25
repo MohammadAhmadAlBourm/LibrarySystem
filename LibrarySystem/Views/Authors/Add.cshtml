@@ -1,0 +1,19 @@
+﻿@model LibrarySystem.Models.ViewModel.AuthorViewModel
+@{
+    ViewData["Title"] = "Author";
+}
+<h1>Add New Author </h1>
+
+<form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="FirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for="first_name" />
+    </div>
+    <div class="mb-3">
+        <label for="LastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" asp-for="last_name">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

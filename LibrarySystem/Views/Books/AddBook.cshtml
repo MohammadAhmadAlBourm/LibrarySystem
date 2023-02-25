@@ -1,0 +1,41 @@
+﻿@model LibrarySystem.Models.ViewModel.BookViewModel
+@{
+    ViewData["Title"] = "Book";
+}
+<h1>Add New Book </h1>
+
+<form method="post" action="AddBook" class="mt-5">
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" class="form-control" asp-for="title" />
+    </div>
+
+    <div class="mb-3">
+        <label for="Publisher" class="form-label">Publisher</label>
+        <input type="text" class="form-control" asp-for="publisher">
+    </div>
+
+    <div class="mb-3">
+        <label for="PublishDate" class="form-label">PublishDate</label>
+        <input type="date" class="form-control" asp-for="publish_date">
+    </div>
+
+    <div class="mb-3">
+        <label for="ISBN" class="form-label">ISBN</label>
+        <input type="text" class="form-control" asp-for="isbn">
+    </div>
+
+    <div class="mb-3">
+        @Html.DropDownList("author_id", new SelectList(ViewBag.Authors, "Id", "FirstName"), "Select a author", new { @class = "form-control", id = "category-dropdown" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+    });
+</script>

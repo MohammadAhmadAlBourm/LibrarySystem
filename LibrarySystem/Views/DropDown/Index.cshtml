@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Dropdowns";
+}
+
+<h2>Dropdowns</h2>
+
+<div class="mb-3">
+    @Html.DropDownList("AuthorID", new SelectList(ViewBag.Authors, "Id", "FirstName"), "Select a category", new { @class = "form-control", id = "category-dropdown" })
+</div>
+
+<div class="mb-3">
+    @Html.DropDownList("BookID", Enumerable.Empty<SelectListItem>(), "Select a book", new { @class = "form-control", id = "product-dropdown" })
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#category-dropdown").change(function () {
+            var AuthorID = $(this).val();
+            $.ajax({
+                url: "@Url.Action("GetFilteredData", "Dropdown")",
+                data: { AuthorID: AuthorID },
+                success: function (data) {
+                    console.log(data);
+                    var items = "<option>Select a product</option>";
+                    $.each(data, function (i, books) {
+                        items += "<option value='" + books.id + "'>" + books.title + "</option>";
+                    });
+                    $("#product-dropdown").html(items);
+                }
+            });
+        });
+
+
+    });
+    
+</script>
