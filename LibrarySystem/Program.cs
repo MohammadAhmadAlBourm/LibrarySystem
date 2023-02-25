@@ -15,6 +15,19 @@ internal class Program
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryEntity")));
         builder.Services.AddControllers();
 
+        builder.Services.AddHttpClient();
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+        });
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -36,7 +49,7 @@ internal class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
+        app.UseCors("AllowAll");
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
